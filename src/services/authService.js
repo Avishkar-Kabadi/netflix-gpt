@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { appRouter } from "../appRouter";
 import { addUser, removeUser } from "../store/userSlice";
 import "../utils/firebase";
+import USER_AVTAR from "../assets/Profile-icon.jpg";
+
 
 export const signUp = async (email, password, fullName, dispatch) => {
     const auth = getAuth();
@@ -11,7 +12,7 @@ export const signUp = async (email, password, fullName, dispatch) => {
 
         await updateProfile(auth.currentUser, {
             displayName: fullName,
-            photoURL: "https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci82Y2QyMTRiNjllYzA0NThhZTBhMDYyZGZhM2EzZmIzMD9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.c9a0HzSG3ugBYKHpe56mBvx0rXwSZuIkWXsbkzi-jQE"
+            photoURL: USER_AVTAR
         });
 
         await auth.currentUser.reload();
@@ -80,7 +81,7 @@ export const signOutUser = async () => {
 
 
 
-export const listenToAuthChanges = (dispatch) => {
+export const listenToAuthChanges = (dispatch, navigate) => {
     const auth = getAuth();
 
     return onAuthStateChanged(auth, (user) => {
@@ -92,13 +93,14 @@ export const listenToAuthChanges = (dispatch) => {
                 photoURL: user.photoURL
             }
             dispatch(addUser(formattedUser));
-            appRouter.navigate("/browse");
+            // appRouter.navigate("/browse");
+            navigate("/browse")
 
         }
         else {
             dispatch(removeUser());
-            appRouter.navigate("/");
-
+            // appRouter.navigate("/");
+            navigate("/")
         }
     });
 };

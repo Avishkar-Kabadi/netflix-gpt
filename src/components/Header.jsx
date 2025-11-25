@@ -1,16 +1,31 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Netflix-Logo.png";
-import { signOutUser } from "../services/authService";
-import ProfileIcon from "../assets/Profile-icon.jpg";
+import USER_AVTAR from "../assets/Profile-icon.jpg";
+import { listenToAuthChanges, signOutUser } from "../services/authService";
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const unsubscribe = listenToAuthChanges(dispatch, navigate);
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   const handleSignOut = async () => {
-    const result = await signOutUser();
-    console.log(result);
+    try {
+      await signOutUser();
+    } catch (error) {
+      navigate("/error");
+    }
   };
 
   const user = useSelector((store) => store.user);
-  const Profile = user?.photoURL || ProfileIcon;
+  const Profile = user?.photoURL || USER_AVTAR;
 
   return (
     <>

@@ -16,7 +16,14 @@
 - Created Redux store with userSlice
 - Implemented Sign Out
 - Update Profile
-- Fetch Movies from TMDB Movies
+- BugFix : Signup user DisplayName and Profile picture update
+- bugFix : Navigation errors if user is signed In, user should not able to navigate to login
+- Unsubscribed to onAuthStateChanged callback
+- Fetch Movies from Trak TV Movies
+- Update store with movie data
+- Created videoTitle and VideBackground pages
+- Embedded the youtube video and make it autopla and mute
+- Tailwind classes to make Main container look awesome
 
 ## Features
 

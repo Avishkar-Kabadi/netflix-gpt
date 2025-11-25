@@ -51,15 +51,12 @@ export default function Login() {
         setErrorMessage(result.error.message);
         return;
       }
-      console.log("User created:", result);
-      alert("Signup successful!");
     } else {
       const result = await signIn(email.current.value, password.current.value);
       if (result?.error) {
         setErrorMessage(result.error.message);
         return;
       }
-      console.log("Logged In successfull:", result.accessToken);
     }
   };
 
