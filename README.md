@@ -33,6 +33,9 @@
   lg: 1024 and above  
   xl: 1280 and above  
   2xl: 1536 and above
+- GPT Search feature
+- Feature on our app
+- multilingual Feature on our app
 
 ## Features
 
