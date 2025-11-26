@@ -6,33 +6,34 @@ import { TRAKT_CLIENT_ID } from "../utils/trakt";
 export default function useFetchMovies(query) {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        async function fetchMovies() {
-            try {
-                const res = await fetch(
-                    `https://api.trakt.tv/movies/${query}?page=1&limit=50`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "trakt-api-version": "2",
-                            "trakt-api-key": TRAKT_CLIENT_ID,
-                        },
-                    }
-                );
-
-                if (!res.ok) {
-                    throw new Error("Failed to fetch movies");
+    const fetchMovies = async () => {
+        try {
+            const res = await fetch(
+                `https://api.trakt.tv/movies/${query}?page=1&limit=50`,
+                {
+                    method: "GET",
+                    headers: {
+                        "trakt-api-version": "2",
+                        "trakt-api-key": TRAKT_CLIENT_ID,
+                    },
                 }
+            );
 
-                const data = await res.json();
-
-                const moviesArray = Array.isArray(data) ? data : [];
-
-                dispatch(addNowPlayingMovies(moviesArray));
-            } catch (error) {
-                console.error("Trakt Error:", error);
+            if (!res.ok) {
+                throw new Error("Failed to fetch movies");
             }
+
+            const data = await res.json();
+
+            const moviesArray = Array.isArray(data) ? data : [];
+
+            dispatch(addNowPlayingMovies(moviesArray));
+        } catch (error) {
+            console.error("Trakt Error:", error);
         }
+    }
+
+    useEffect(() => {
 
         fetchMovies();
     }, [query, dispatch]);

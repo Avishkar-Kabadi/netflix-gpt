@@ -51,6 +51,7 @@ export default function Login() {
         setErrorMessage(result.error.message);
         return;
       }
+      console.log("User created:", result);
     } else {
       const result = await signIn(email.current.value, password.current.value);
       if (result?.error) {

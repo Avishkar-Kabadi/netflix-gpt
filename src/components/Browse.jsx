@@ -6,7 +6,7 @@ export default function Browse() {
   useFetchMovies("trending");
 
   return (
-    <div>
+    <div className="min-h-screen ">
       <Header />
       <MainContainer />
       <SecondaryContainer />

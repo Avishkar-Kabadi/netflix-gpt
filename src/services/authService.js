@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { addUser, removeUser } from "../store/userSlice";
 import "../utils/firebase";
-import USER_AVTAR from "../assets/Profile-icon.jpg";
+import USER_AVTAR from "../assets/Profile-Icon.jpg";
 
 
 export const signUp = async (email, password, fullName, dispatch) => {

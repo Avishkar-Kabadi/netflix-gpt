@@ -24,6 +24,15 @@
 - Created videoTitle and VideBackground pages
 - Embedded the youtube video and make it autopla and mute
 - Tailwind classes to make Main container look awesome
+- Build secondaryComponent
+- Created MovieList and MovieCards components
+- created hook fetchAllMovies - Fetch all moveis from Trak TV movies
+- Responsive Tailwind
+  sm: 640 and above  
+  md: 768 and above  
+  lg: 1024 and above  
+  xl: 1280 and above  
+  2xl: 1536 and above
 
 ## Features
 
