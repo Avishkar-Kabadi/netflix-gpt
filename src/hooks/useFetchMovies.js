@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addNowPlayingMovies } from "../store/moviesSlice";
-import { TRAKT_CLIENT_ID } from "../utils/trakt";
+const { TRAKT_CLIENT_ID } = import.meta.env;
+
 
 export default function useFetchMovies(query) {
     const dispatch = useDispatch();

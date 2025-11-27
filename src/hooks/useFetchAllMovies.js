@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addAllMovies } from '../store/moviesSlice';
-import { TRAKT_CLIENT_ID } from '../utils/trakt';
 
+const { TRAKT_CLIENT_ID } = import.meta.env;
 const HEADERS = {
     'Content-Type': 'application/json',
     'trakt-api-version': '2',
