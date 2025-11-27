@@ -1,19 +1,24 @@
-const MovieCard = ({ title, released, poster, rating }) => {
-  // Safe poster handling
+const MovieCard = ({ title, poster, rating }) => {
   const posterUrl = poster
     ? poster.startsWith("http")
       ? poster
       : `https://${poster}`
     : "https://placehold.co/300x450/000/FFF?text=No+Poster";
 
-  // Safe rating
-  const safeRating =
-    typeof rating === "number" ? rating.toFixed(1) : rating || "N/A";
+  let safeRating;
+
+  if (!rating || Number(rating) === 0) {
+    safeRating = "N/A";
+  } else {
+    safeRating = Number(rating).toFixed(1);
+  }
+
+  if (!poster) return null;
 
   return (
     <div className="w-32 sm:w-36 md:w-48 pr-4 inline-block transition duration-300 transform hover:scale-110 hover:z-30 cursor-pointer">
       <img
-        className="w-full aspect-[2/3] rounded-lg object-cover shadow-md"
+        className="w-full aspect-2/3 rounded-lg object-cover shadow-md"
         src={posterUrl}
         alt={title}
         onError={(e) => {

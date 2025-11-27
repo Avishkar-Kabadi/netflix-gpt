@@ -7,6 +7,7 @@ import { listenToAuthChanges, signOutUser } from "../services/authService";
 import { selectLang } from "../store/configSlice";
 import { toggleGptSearchView } from "../store/gptSlice";
 import { SUPPORTed_LANGUAGES } from "../utils/languageConstants";
+import { removeGptMovieResult } from "../store/gptSlice";
 export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function Header() {
 
   const handleSearchClick = () => {
     dispatch(toggleGptSearchView());
+    dispatch(removeGptMovieResult());
   };
 
   return (
@@ -76,7 +78,7 @@ export default function Header() {
                    rounded-md shadow-md hover:shadow-lg 
                    transition-all duration-200"
             >
-              GPT Search
+              {showGptSearch ? "Home" : "GPT Search"}
             </button>
             <img
               src={Profile}

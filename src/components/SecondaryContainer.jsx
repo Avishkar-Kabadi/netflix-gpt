@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useFetchAllMovies } from "../hooks/useFetchAllMovies";
-import MovieList from "./movieList";
+import MovieList from "./MovieList";
 
 export default function SecondaryContainer() {
   useFetchAllMovies();
