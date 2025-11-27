@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addGptMovieResult } from "../store/gptSlice";
-const { TRAKT_CLIENT_ID } = import.meta.env;
+const { VITE_TRAKT_CLIENT_ID } = import.meta.env;
 
 
 export default function useSearchMovies(queries = []) {
@@ -23,7 +23,7 @@ export default function useSearchMovies(queries = []) {
                             headers: {
                                 "Content-Type": "application/json",
                                 "trakt-api-version": "2",
-                                "trakt-api-key": TRAKT_CLIENT_ID,
+                                "trakt-api-key": VITE_TRAKT_CLIENT_ID,
                             },
                         }
                     )

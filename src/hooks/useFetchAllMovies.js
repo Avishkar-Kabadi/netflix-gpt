@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addAllMovies } from '../store/moviesSlice';
 
-const { TRAKT_CLIENT_ID } = import.meta.env;
+const { VITE_TRAKT_CLIENT_ID } = import.meta.env;
 const HEADERS = {
     'Content-Type': 'application/json',
     'trakt-api-version': '2',
-    'trakt-api-key': TRAKT_CLIENT_ID,
+    'trakt-api-key': VITE_TRAKT_CLIENT_ID,
 };
 
 // Helper to fetch a valid endpoint

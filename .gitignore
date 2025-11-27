@@ -13,7 +13,6 @@ dist
 dist-ssr
 *.local
 .firebase
-hosting.ZGlzdA.cache
 firebase.json
 .firebaserc
 # Editor directories and files
@@ -26,3 +25,5 @@ firebase.json
 *.njsproj
 *.sln
 *.sw?
+.firebase/hosting.ZGlzdA.cache
+.firebase/hosting.ZGlzdA.cache

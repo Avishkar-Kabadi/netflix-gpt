@@ -1,5 +1,13 @@
-const VideoTitle = ({ title, logo, overview }) => {
+import { useDispatch } from "react-redux";
+import { setTrailer } from "../store/configSlice";
+
+const VideoTitle = ({ title, logo, overview, trailer, homepage }) => {
   const movieLogo = logo ? `https://${logo}` : null;
+  const dispatch = useDispatch();
+
+  const handlePlay = () => {
+    dispatch(setTrailer(trailer));
+  };
 
   return (
     <div
@@ -13,7 +21,6 @@ const VideoTitle = ({ title, logo, overview }) => {
         z-10
       "
     >
-      {/* Logo or Title */}
       {movieLogo ? (
         <img
           src={movieLogo}
@@ -42,7 +49,6 @@ const VideoTitle = ({ title, logo, overview }) => {
         </h1>
       )}
 
-      {/* Description */}
       <p
         className="
           hidden md:block 
@@ -56,9 +62,9 @@ const VideoTitle = ({ title, logo, overview }) => {
         {overview}
       </p>
 
-      {/* Buttons */}
       <div className="flex mt-4 space-x-3">
         <button
+          onClick={handlePlay}
           className="
             flex items-center 
             bg-white text-black 
@@ -83,11 +89,11 @@ const VideoTitle = ({ title, logo, overview }) => {
               clipRule="evenodd"
             />
           </svg>
-          Play
+          Play Trailer
         </button>
-
-        <button
-          className="
+        <a  href={homepage}>
+          <button
+            className="
             flex items-center 
             bg-gray-600/70 
             text-white 
@@ -99,21 +105,22 @@ const VideoTitle = ({ title, logo, overview }) => {
             hover:bg-gray-500/80 
             transition
           "
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6 mr-2"
           >
-            <path
-              fillRule="evenodd"
-              d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.4-3.5h-2.25v2.25h2.25V8.5zM12 11.5a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"
-              clipRule="evenodd"
-            />
-          </svg>
-          More Info
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6 mr-2"
+            >
+              <path
+                fillRule="evenodd"
+                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.4-3.5h-2.25v2.25h2.25V8.5zM12 11.5a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"
+                clipRule="evenodd"
+              />
+            </svg>
+            More Info
+          </button>
+        </a>
       </div>
     </div>
   );

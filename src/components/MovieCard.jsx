@@ -1,4 +1,8 @@
-const MovieCard = ({ title, poster, rating }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { setTrailer } from "../store/configSlice";
+
+const MovieCard = ({ title, poster, rating, videoUrl }) => {
+  const dispatch = useDispatch();
   const posterUrl = poster
     ? poster.startsWith("http")
       ? poster
@@ -13,10 +17,17 @@ const MovieCard = ({ title, poster, rating }) => {
     safeRating = Number(rating).toFixed(1);
   }
 
+  const handleClick = () => {
+    dispatch(setTrailer(videoUrl));
+  };
+
   if (!poster) return null;
 
   return (
-    <div className="w-32 sm:w-36 md:w-48 pr-4 inline-block transition duration-300 transform hover:scale-110 hover:z-30 cursor-pointer">
+    <div
+      onClick={handleClick}
+      className="w-32 sm:w-36 md:w-48 pr-4 inline-block transition duration-300 transform hover:scale-110 hover:z-30 cursor-pointer"
+    >
       <img
         className="w-full aspect-2/3 rounded-lg object-cover shadow-md"
         src={posterUrl}

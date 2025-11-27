@@ -57,6 +57,7 @@ const MovieList = ({ title, movies = [] }) => {
                     movie?.images?.poster?.[0] || movie?.poster_path || ""
                   }
                   rating={rating}
+                  videoUrl={movie?.trailer}
                 />
               </div>
             );

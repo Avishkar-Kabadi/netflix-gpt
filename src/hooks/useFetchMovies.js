@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addNowPlayingMovies } from "../store/moviesSlice";
-const { TRAKT_CLIENT_ID } = import.meta.env;
+const { VITE_TRAKT_CLIENT_ID } = import.meta.env;
 
 
 export default function useFetchMovies(query) {
@@ -15,7 +15,7 @@ export default function useFetchMovies(query) {
                     method: "GET",
                     headers: {
                         "trakt-api-version": "2",
-                        "trakt-api-key": TRAKT_CLIENT_ID,
+                        "trakt-api-key": VITE_TRAKT_CLIENT_ID,
                     },
                 }
             );
