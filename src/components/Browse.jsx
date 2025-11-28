@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import useOnlineStatus from "react-use-online-status-hook";
 
 export default function Browse() {
+
   useFetchMovies("trending");
   const showTrailer = useSelector((store) => store.config?.showTrailer);
 
