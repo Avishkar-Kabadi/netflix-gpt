@@ -51,7 +51,6 @@ const GptSearchBar = () => {
     }
   }, [movies]);
 
-  // Update button disabled state on input change
   const handleInputChange = () => {
     const value = searchText.current?.value || "";
     setIsDisabled(value.trim() === "" || loading);
