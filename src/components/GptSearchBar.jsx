@@ -87,7 +87,7 @@ const GptSearchBar = () => {
                  : "hover:bg-red-700 hover:shadow-lg"
              }`}
         >
-          {loading ? "Loading..." : lang[ln].search}
+          {loading ? "Generating results..." : lang[ln].search}
         </button>
 
         {errorMessage && (
