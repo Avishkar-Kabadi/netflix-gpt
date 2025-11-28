@@ -127,3 +127,5 @@ const VideoTitle = ({ title, logo, overview, trailer, homepage }) => {
 };
 
 export default VideoTitle;
+
+
