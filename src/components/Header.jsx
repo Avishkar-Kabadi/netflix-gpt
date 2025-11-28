@@ -2,12 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Netflix-Logo.png";
-import USER_AVTAR from "../assets/Profile-icon.jpg";
+import USER_AVTAR from "../assets/Profile-Icon.jpg";
 import { listenToAuthChanges, signOutUser } from "../services/authService";
 import { selectLang } from "../store/configSlice";
-import { toggleGptSearchView } from "../store/gptSlice";
+import { removeGptMovieResult, toggleGptSearchView } from "../store/gptSlice";
 import { SUPPORTed_LANGUAGES } from "../utils/languageConstants";
-import { removeGptMovieResult } from "../store/gptSlice";
 export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
