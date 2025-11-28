@@ -54,6 +54,7 @@ const GptSearchBar = () => {
   const handleInputChange = () => {
     const value = searchText.current?.value || "";
     setIsDisabled(value.trim() === "" || loading);
+    setErrorMessage("");
   };
 
   return (
@@ -68,7 +69,7 @@ const GptSearchBar = () => {
           type="text"
           ref={searchText}
           placeholder={lang[ln].gptSearchPlaceholder}
-          onChange={handleInputChange} // <-- track input
+          onChange={handleInputChange}
           className="col-span-9 p-3 rounded-lg 
                      bg-white text-black 
                      focus:outline-none focus:ring-2 focus:ring-red-500"
@@ -76,7 +77,7 @@ const GptSearchBar = () => {
 
         <button
           onClick={handleSubmit}
-          disabled={isDisabled} // <-- use new state
+          disabled={isDisabled}
           className={`col-span-3 px-2 py-3 
              bg-red-600 text-white font-semibold text-sm 
              rounded-lg shadow-md transition-all duration-200
@@ -90,9 +91,11 @@ const GptSearchBar = () => {
         </button>
 
         {errorMessage && (
-          <p className="text-red-500 font-bold text-base py-2">
-            {errorMessage}
-          </p>
+          <div className="flex justify-center mt-3">
+            <p className="bg-red-100 text-red-700 border border-red-300 px-4 py-2 rounded-lg shadow-sm text-sm font-semibold text-center w-fit">
+              {errorMessage}
+            </p>
+          </div>
         )}
       </form>
     </div>
