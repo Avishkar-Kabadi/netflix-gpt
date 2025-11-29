@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addAllMovies } from '../store/moviesSlice';
 
 const { VITE_TRAKT_CLIENT_ID } = import.meta.env;
@@ -19,6 +19,7 @@ const fetchMovies = async (endpoint) => {
 
 export const useFetchAllMovies = () => {
     const dispatch = useDispatch();
+    const allMovies = useSelector((store) => store.movies?.allMovies)
 
     useEffect(() => {
         const fetchAll = async () => {
@@ -41,7 +42,6 @@ export const useFetchAllMovies = () => {
                 console.error(err);
             }
         };
-
-        fetchAll();
+        !allMovies && fetchAll();
     }, [dispatch]);
 };

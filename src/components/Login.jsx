@@ -89,7 +89,7 @@ export default function Login() {
           )}
 
           <input
-            type="email"
+            type="text"
             placeholder="Email Address"
             ref={email}
             className="p-4 my-3 w-full rounded bg-[#333] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"

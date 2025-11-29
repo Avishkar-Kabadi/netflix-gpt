@@ -16,8 +16,24 @@ export const checkValidData = (email, password, fullName) => {
         email
     );
 
+
+    if (email != null && email !== undefined) {
+        const trimmedEmail = email.trim();
+        if (trimmedEmail.length === 0) {
+            return "Email is Required";
+        }
+    }
+
     if (!isEmailValid) {
         return "Email ID is not valid";
+    }
+
+
+    if (password != null && password !== undefined) {
+        const trimmedPassword = password.trim();
+        if (trimmedPassword.length === 0) {
+            return "Password is Required";
+        }
     }
 
     const isPasswordValid =
@@ -29,5 +45,5 @@ export const checkValidData = (email, password, fullName) => {
         return "Password must be 8+ chars with uppercase, number & special char.";
     }
 
-    return null; 
+    return null;
 };

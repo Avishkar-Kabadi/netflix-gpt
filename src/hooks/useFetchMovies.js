@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../store/moviesSlice";
 const { VITE_TRAKT_CLIENT_ID } = import.meta.env;
 
 
 export default function useFetchMovies(query) {
     const dispatch = useDispatch();
+    const nowPlayingMovies = useSelector((store) => store.movies?.nowPlayingMovies)
 
     const fetchMovies = async () => {
         try {
@@ -36,6 +37,6 @@ export default function useFetchMovies(query) {
 
     useEffect(() => {
 
-        fetchMovies();
+        !nowPlayingMovies && fetchMovies();
     }, [query, dispatch]);
 }
