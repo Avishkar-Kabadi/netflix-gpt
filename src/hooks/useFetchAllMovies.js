@@ -42,6 +42,6 @@ export const useFetchAllMovies = () => {
                 console.error(err);
             }
         };
-        !allMovies && fetchAll();
+        allMovies.length === 0 && fetchAll();
     }, [dispatch]);
 };

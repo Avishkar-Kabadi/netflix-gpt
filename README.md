@@ -36,6 +36,7 @@
 - GPT Search feature
 - Feature on our app
 - multilingual Feature on our app
+- Memoriaztion to avoid unnecessary API calls
 
 ## Features
 

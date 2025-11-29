@@ -37,6 +37,6 @@ export default function useFetchMovies(query) {
 
     useEffect(() => {
 
-        !nowPlayingMovies && fetchMovies();
+        nowPlayingMovies.length === 0 && fetchMovies();
     }, [query, dispatch]);
 }
