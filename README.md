@@ -342,7 +342,8 @@ npm install firebase
 Create `firebase.js`:
 
 ```javascript
-// filepath: src/firebase.js
+// filepath: src/utils/firebase.js
+// You'll get this from your firebase console after creating web app in your firebase project 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -408,7 +409,7 @@ onAuthStateChanged(auth, (user) => {
 
 ---
 
-## 🔥 Deploying to Firebase Hosting
+## 🔥Deploying to Firebase Hosting
 
 1️⃣ Install Firebase CLI
 
@@ -459,7 +460,7 @@ npm install @google/generative-ai
 2️⃣ Create `gemini.js`
 
 ```javascript
-// filepath: src/gemini.js
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
@@ -469,7 +470,6 @@ export const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 3️⃣ Use Gemini in NetflixGPT Search
 
 ```javascript
-// filepath: src/api/getGPTMovies.js
 import { model } from "../gemini";
 
 export const getGPTMovies = async (query) => {
